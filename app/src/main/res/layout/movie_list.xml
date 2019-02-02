@@ -7,12 +7,12 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="#000"
         android:orientation="vertical">
 
         <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#77ffffff"
             android:orientation="vertical">
 
             <RelativeLayout
@@ -28,6 +28,7 @@
                     android:layout_marginTop="8dp"
                     android:text="UpComing"
                     android:textSize="25dp"
+                    android:textColor="#fff"
                     android:textStyle="bold" />
 
                 <android.support.v7.widget.RecyclerView
@@ -35,7 +36,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/upcomingtext"
-                    android:background="#33ffffff"
                     android:scrollbars="none" />
             </RelativeLayout>
 
@@ -54,6 +54,7 @@
                     android:layout_marginTop="8dp"
                     android:text="Now Playing "
                     android:textSize="25dp"
+                    android:textColor="#fff"
                     android:textStyle="bold" />
 
                 <android.support.v7.widget.RecyclerView
@@ -62,7 +63,6 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/nowplayingtext"
                     android:layout_marginTop="10dp"
-                    android:background="#33ffffff"
                     android:scrollbars="none" />
             </RelativeLayout>
 
@@ -81,6 +81,7 @@
                     android:layout_marginTop="8dp"
                     android:text="Popular"
                     android:textSize="25dp"
+                    android:textColor="#fff"
                     android:textStyle="bold" />
 
                 <android.support.v7.widget.RecyclerView
@@ -89,7 +90,6 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/populartext"
                     android:layout_marginTop="10dp"
-                    android:background="#33ffffff"
                     android:scrollbars="none" />
             </RelativeLayout>
 
@@ -106,6 +106,7 @@
                     android:layout_marginTop="8dp"
                     android:text="Top Rated"
                     android:textSize="25dp"
+                    android:textColor="#fff"
                     android:textStyle="bold" />
 
                 <android.support.v7.widget.RecyclerView
@@ -114,7 +115,6 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/topRated"
                     android:layout_marginTop="10dp"
-                    android:background="#33ffffff"
                     android:scrollbars="none" />
             </RelativeLayout>
         </RelativeLayout>
