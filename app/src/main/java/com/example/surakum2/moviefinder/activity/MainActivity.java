@@ -1,8 +1,8 @@
 package com.example.surakum2.moviefinder.activity;
 
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -10,7 +10,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.example.surakum2.moviefinder.R;
 import com.example.surakum2.moviefinder.model.MovieList;
@@ -49,8 +48,13 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
-        ClientUiCommon.setInstance();
         MovieList.setInstance();
+
+       /* MovieListFragment movieListFragment = new MovieListFragment();
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.movieList_fragment, movieListFragment, movieListFragment.toString());
+        ft.commit();*/
+
     }
 
     @Override
@@ -63,10 +67,6 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void getMovieList(View view) {
-        Intent i = new Intent(MainActivity.this, MovieListActivity.class);
-        startActivity(i);
-    }
 
 
 }

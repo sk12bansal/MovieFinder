@@ -52,9 +52,9 @@ public class movieListAdapter extends RecyclerView.Adapter<movieListAdapter.Movi
             super(v);
             movieList = v.findViewById(R.id.movie_item_layout);
             avatar = v.findViewById(R.id.movieImage);
-            title = v.findViewById(R.id.title);
+            /*title = v.findViewById(R.id.title);
             review = v.findViewById(R.id.review);
-            releasedDate = v.findViewById(R.id.date);
+            releasedDate = v.findViewById(R.id.date);*/
         }
     }
 
@@ -70,9 +70,9 @@ public class movieListAdapter extends RecyclerView.Adapter<movieListAdapter.Movi
         String image_path = movieListModels.get(position).getMovieImage();
         String imageUrl = IMAGE_BASE_URL + image_path;
         Picasso.get().load(imageUrl).into(holder.avatar);
-        holder.title.setText(movieListModels.get(position).getTitle());
+        /*holder.title.setText(movieListModels.get(position).getTitle());
         holder.review.setText(movieListModels.get(position).getRating());
-        holder.releasedDate.setText(movieListModels.get(position).getReleaseDate());
+        holder.releasedDate.setText(movieListModels.get(position).getReleaseDate());*/
 
     }
 
