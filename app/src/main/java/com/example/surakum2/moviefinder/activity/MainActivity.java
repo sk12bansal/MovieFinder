@@ -63,10 +63,6 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void getMovieList(View view) {
-        Intent i = new Intent(MainActivity.this, MovieListActivity.class);
-        startActivity(i);
-    }
 
 
 }

@@ -33,7 +33,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
-        <Button
+        <fragment android:name="com.example.surakum2.moviefinder.fragment.MovieListFragment"
+            android:id="@+id/movieList_fragment"
+            android:layout_weight="2"
+            android:layout_width="match_parent"
+            android:layout_marginTop="?attr/actionBarSize"
+            android:layout_height="wrap_content" />
+
+        <!--<Button
             android:id="@+id/loginButton"
             android:layout_width="150dp"
             android:layout_height="75dp"
@@ -45,7 +52,7 @@
             android:textColor="#ffff"
             android:textSize="12dp"
             android:textStyle="bold"
-            android:layout_marginLeft="50dp" />
+            android:layout_marginLeft="50dp" />-->
     </LinearLayout>
 
 </android.support.v4.widget.DrawerLayout>

@@ -1,11 +1,13 @@
-package com.example.surakum2.moviefinder.activity;
+package com.example.surakum2.moviefinder.fragment;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import com.example.surakum2.moviefinder.R;
 import com.example.surakum2.moviefinder.adapter.movieListAdapter;
@@ -22,7 +24,10 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MovieListActivity extends AppCompatActivity {
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class MovieListFragment extends Fragment {
 
     RecyclerView recyclerView;
     RecyclerView.Adapter myAdapter;
@@ -30,46 +35,54 @@ public class MovieListActivity extends AppCompatActivity {
     List<MovieListModel> myNowPlayingDataSource = new ArrayList<>();
     List<MovieListModel> myPopularDataSource = new ArrayList<>();
     List<MovieListModel> myTopratedDataSource = new ArrayList<>();
-    private List<MainSecionType> mainSecionList;
 
     public enum MainSecionType {
-        UPCOMING,NOW_PLAYING,POPULAR,TOP_RATED
+        UPCOMING, NOW_PLAYING, POPULAR, TOP_RATED
     }
 
+    private List<MainSecionType> mainSecionList;
+
+
+    public MovieListFragment() {
+        // Required empty public constructor
+    }
+
+
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.movie_list);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.movie_list, container, false);
 
         mainSecionList = ClientUiCommon.getDefaultMainSecionList();
         for (int i = 0; i < mainSecionList.size(); i++) {
             MainSecionType mainSecionType = mainSecionList.get(i);
             switch (mainSecionType) {
                 case UPCOMING:
-                    recyclerView = findViewById(R.id.upcoming_movies_recycler_view);
-                    recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-                    myAdapter = new movieListAdapter(myUpComingDataSource,R.layout.movie_list_item,getApplicationContext());
+                    recyclerView = view.findViewById(R.id.upcoming_movies_recycler_view);
+                    recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+                    myAdapter = new movieListAdapter(myUpComingDataSource, R.layout.movie_list_item, getContext());
                     recyclerView.setAdapter(myAdapter);
                     loadUpComingMovieList();
                     break;
                 case NOW_PLAYING:
-                    recyclerView = findViewById(R.id.nowPlaying_movies_recycler_view);
-                    recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-                    myAdapter = new movieListAdapter(myNowPlayingDataSource,R.layout.movie_list_item,getApplicationContext());
+                    recyclerView = view.findViewById(R.id.nowPlaying_movies_recycler_view);
+                    recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+                    myAdapter = new movieListAdapter(myNowPlayingDataSource, R.layout.movie_list_item, getContext());
                     recyclerView.setAdapter(myAdapter);
                     loadNowPlayingMovieList();
                     break;
                 case POPULAR:
-                    recyclerView = findViewById(R.id.popular_movies_recycler_view);
-                    recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-                    myAdapter = new movieListAdapter(myPopularDataSource,R.layout.movie_list_item,getApplicationContext());
+                    recyclerView = view.findViewById(R.id.popular_movies_recycler_view);
+                    recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+                    myAdapter = new movieListAdapter(myPopularDataSource, R.layout.movie_list_item, getContext());
                     recyclerView.setAdapter(myAdapter);
                     loadPopularMovieList();
                     break;
                 case TOP_RATED:
-                    recyclerView = findViewById(R.id.toprated_movies_recycler_view);
-                    recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-                    myAdapter = new movieListAdapter(myTopratedDataSource,R.layout.movie_list_item,getApplicationContext());
+                    recyclerView = view.findViewById(R.id.toprated_movies_recycler_view);
+                    recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+                    myAdapter = new movieListAdapter(myTopratedDataSource, R.layout.movie_list_item, getContext());
                     recyclerView.setAdapter(myAdapter);
                     loadTopRatedMovieList();
                     break;
@@ -77,17 +90,18 @@ public class MovieListActivity extends AppCompatActivity {
 
             }
         }
-
+        return view;
     }
 
-    public void loadUpComingMovieList(){
+
+    public void loadUpComingMovieList() {
         MovieDbEndPoints apiService = APIClient.getClient().create(MovieDbEndPoints.class);
         Call<MovieList> call = apiService.getUpComingMovieList();
 
         call.enqueue(new Callback<MovieList>() {
             @Override
             public void onResponse(Call<MovieList> call, Response<MovieList> response) {
-                if(response!=null){
+                if (response != null) {
 
                     MovieList movieList = response.body();
                     myUpComingDataSource.clear();
@@ -110,14 +124,14 @@ public class MovieListActivity extends AppCompatActivity {
     }
 
 
-    public void loadNowPlayingMovieList(){
+    public void loadNowPlayingMovieList() {
         MovieDbEndPoints apiService = APIClient.getClient().create(MovieDbEndPoints.class);
         Call<MovieList> call = apiService.getNowPlayingMovieList();
 
         call.enqueue(new Callback<MovieList>() {
             @Override
             public void onResponse(Call<MovieList> call, Response<MovieList> response) {
-                if(response!=null){
+                if (response != null) {
 
                     MovieList movieList = response.body();
                     myNowPlayingDataSource.clear();
@@ -139,14 +153,14 @@ public class MovieListActivity extends AppCompatActivity {
 
     }
 
-    public void loadPopularMovieList(){
+    public void loadPopularMovieList() {
         MovieDbEndPoints apiService = APIClient.getClient().create(MovieDbEndPoints.class);
         Call<MovieList> call = apiService.getPopularMovieList();
 
         call.enqueue(new Callback<MovieList>() {
             @Override
             public void onResponse(Call<MovieList> call, Response<MovieList> response) {
-                if(response!=null){
+                if (response != null) {
 
                     MovieList movieList = response.body();
                     myPopularDataSource.clear();
@@ -169,14 +183,14 @@ public class MovieListActivity extends AppCompatActivity {
     }
 
 
-    public void loadTopRatedMovieList(){
+    public void loadTopRatedMovieList() {
         MovieDbEndPoints apiService = APIClient.getClient().create(MovieDbEndPoints.class);
         Call<MovieList> call = apiService.getTopRatedMovieList();
 
         call.enqueue(new Callback<MovieList>() {
             @Override
             public void onResponse(Call<MovieList> call, Response<MovieList> response) {
-                if(response!=null){
+                if (response != null) {
 
                     MovieList movieList = response.body();
                     myTopratedDataSource.clear();
@@ -197,4 +211,5 @@ public class MovieListActivity extends AppCompatActivity {
         });
 
     }
+
 }
