@@ -7,7 +7,6 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#000"
         android:orientation="vertical">
 
         <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -28,7 +27,7 @@
                     android:layout_marginTop="8dp"
                     android:text="UpComing"
                     android:textSize="25dp"
-                    android:textColor="#fff"
+                    android:textColor="#000"
                     android:textStyle="bold" />
 
                 <android.support.v7.widget.RecyclerView
@@ -54,7 +53,7 @@
                     android:layout_marginTop="8dp"
                     android:text="Now Playing "
                     android:textSize="25dp"
-                    android:textColor="#fff"
+                    android:textColor="#000"
                     android:textStyle="bold" />
 
                 <android.support.v7.widget.RecyclerView
@@ -81,7 +80,7 @@
                     android:layout_marginTop="8dp"
                     android:text="Popular"
                     android:textSize="25dp"
-                    android:textColor="#fff"
+                    android:textColor="#000"
                     android:textStyle="bold" />
 
                 <android.support.v7.widget.RecyclerView
@@ -106,7 +105,7 @@
                     android:layout_marginTop="8dp"
                     android:text="Top Rated"
                     android:textSize="25dp"
-                    android:textColor="#fff"
+                    android:textColor="#000"
                     android:textStyle="bold" />
 
                 <android.support.v7.widget.RecyclerView

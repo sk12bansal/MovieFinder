@@ -54,6 +54,7 @@ public class MovieListFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.movie_list, container, false);
 
+        ClientUiCommon.setInstance();
         mainSecionList = ClientUiCommon.getDefaultMainSecionList();
         for (int i = 0; i < mainSecionList.size(); i++) {
             MainSecionType mainSecionType = mainSecionList.get(i);
